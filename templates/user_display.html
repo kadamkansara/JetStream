@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet>>>Stream - Users</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mycss/adminpanel.css' %}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="user-info">
+                <!--<img src="vistara.png" alt="User Photo" class="user-photo">-->
+                <p class="user-name">Welcome {{user.username}}</p>
+            </div>
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <!--<li><a href="#">Ticket Booking</a></li>-->
+                <li><a href="{% url 'flight_display' %}">Flights</a></li>
+                <li><a href="{% url 'airport_display' %}">Airports</a></li>
+                <li><a href="{% url 'booking_display' %}">Bookings</a></li>
+                <li><a href="{% url 'user_display' %}">Users</a></li>
+                <li><a href="{% url 'contact_us_display' %}">Messages</a></li>
+                <li><a href="{% url 'admin_logout' %}">Logout</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+
+            <header>
+                <h1>Users</h1>
+            </header>
+
+            <br>
+
+            <header style="background-color:transparent;">
+                {% if messages %}
+                {%for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <h4>{{message}}</h4>
+                    </div>
+                {% endfor %}
+                {% endif %}
+            </header>
+
+            <br>
+
+            <section class="controls">
+
+                <div class="search-row">
+                    <input type="text" id="myInput" placeholder="Search users..." class="search-box">
+                    <button class="btn add-btn" id="myButton">Search</button>
+                </div>
+
+                <div class="buttons-row">
+                    <!--<button class="btn add-btn"><a href="{% url 'add_airlines' %}" style="color:white;text-decoration:none;" >Add Airline</a></button>-->
+                    <!--<button class="btn edit-btn">Edit</button>
+                    <button class="btn delete-btn">Delete</button>-->
+                </div>
+
+            </section>
+
+            <section class="content">
+                <h1>Website-users data</h1>
+                <br>
+                <!-- Add more content here -->
+                <table id="myTable">
+                    <thead >
+                        <tr>
+                          <!--<th>First Name</th>
+                          <th>Last Name</th>-->
+                          <th>User Name</th>
+                          <th>User Mail</th>
+                          <th>User Type</th>
+                          <th>Status</th>
+                          <th>Action</th>
+
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in page_obj %}
+                        <tr>
+                            
+                            <!--<td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{i.first_name }}</td>
+                            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{i.last_name }}</td>-->
+                            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{i.username  }}</td>
+                            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{i.email }}</td>
+                            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                {% if i.is_superuser == True %}
+                                    Admin
+                                {% else %}
+                                     Normal User
+                                {% endif %}
+                            </td>
+                            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                {% if i.is_active == True %}
+                                    Active
+                                {% else %}
+                                     Not Active
+                                {% endif %}
+                            </td>
+                            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"><a href="/admin_part/delete_users/{{ i.id }}" style="color:red;text-decoration:none;" > <button class="btn delete-btn"> Delete </button></a></td><!--&#10060; -->
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                  <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; First Page</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
+                        {% endif %}
+                    </span>
+            
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    <span class="step-links">
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">Next Page</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">Last Page&raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+
+            </section>
+        </main>
+    </div>
+    <script src="{% static 'myjs/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'myjs/user_display.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Jet>>>Stream - Add Flight</title>  
+    {% load static %} 
+    <!--bootstrap link-->
+    <link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+    <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">
+</head>  
+<body> 
+    {{msg}}
+    <div class="container">
+        <h1>+ Add New Flight</h1>
+    <form method="post" class="post-form" enctype="multipart/form-data" >
+        {% csrf_token %}  
+        
+        {{form}}
+        <br>
+        <button type="submit" class="btn btn-info my-2" >Add</button>
+     
+    </form> 
+    </div>  
+</body>  
+</html> 

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet>>>Stream - -error message when  booked flight</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mycss/adminpanel.css' %}">
+</head>
+<body>
+    {% if messages %}
+    {%for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <h4>{{message}}</h4>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+</body>
+</html>

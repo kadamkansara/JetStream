@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Jet>>>Stream - admin login</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'mycss/admin_login.css' %}">
+</head>
+
+
+<body>
+  <div class="title" style="color:white;text-align:center;padding-top:5%;">
+    {% if messages %}
+    {%for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible">
+            <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+            <h4>{{message}}</h4>
+        </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+  <div class="container">
+    <input type="checkbox" id="check">
+    <!--admin_login form start-->
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Welcome Administrator</header>
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" id="email-input" placeholder="Enter Username">
+        <input type="password" name="password" id="password-input" placeholder="Enter Password">
+        <a href="{% url 'password_reset' %}">Forgot Password?</a>
+        <input type="submit" class="button" value="Login">
+      </form>
+    </div>
+    <!--admin_login form ends-->
+    
+  </div>
+</body>
+</html>

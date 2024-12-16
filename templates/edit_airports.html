@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Jet>>>Stream - Edit Airports </title>  
+    {% load static %} 
+    <!--bootstrap link-->
+    <link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+    <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">
+</head>  
+<body> 
+    {{msg}}
+    <div class="container">
+        <h1>Edit Airports</h1>
+    <form method="post" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}  
+        
+        {{form}}
+        <br>
+        <button type="submit" class="btn btn-info my-2" >Save</button>
+     
+    </form> 
+    </div>  
+</body>  
+</html> 

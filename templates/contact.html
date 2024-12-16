@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet>>>Stream - Contact Us</title>
+	{% load static %}
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <!-- lightgallery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'mycss/index.css' %}">
+
+</head>
+<body>
+ 
+ <!-- Book Now -->
+
+    <section class="order" id="contact">
+        <h1 class="heading">Contact</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="box-container">
+
+                <div class="box">
+                    <div class="inputBox">
+                        <span>full name</span>
+                        <input type="text"  id="full_name" name="full_name" placeholder="enter your name" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>your Mobile Number</span>
+                        <input type="text"  id="phone_number" name="phone_number" placeholder="enter mobile number" required>             
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="box">
+                    <div class="inputBox">
+                        <span>your Message</span>
+                        <textarea name="message" id="message" placeholder="enter your Message" cols="30" rows="10"></textarea>
+                    </div>
+                <!--
+                    <div class="inputBox">
+                        <span>our address</span>
+                        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28528.39457616115!2d72.62743906362262!3d23.077236257860914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e814e9704ec85%3A0x90dd00e5a99ba47a!2sSardar%20Vallabhbhai%20Patel%20International%20Airport!5e0!3m2!1sen!2sin!4v1725044325800!5m2!1sen!2sin"</iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.7030448869664!2d72.55770087416039!3d23.034673079165287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f396988351%3A0xeccdeffd03e8dc55!2sHavmor%20Icecream!5e0!3m2!1sen!2sin!4v1721580657558!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                -->
+                </div>
+
+            </div>
+            <input type="submit" value="Send" class="btn">
+        </form>
+
+    </section>
+
+
+
+ 
+    <!-- swiper -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- lightgallery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+    
+    <!-- custom js -->
+    <script src="{% static 'myjs/home.js' %}"></script>
+
+    <script>
+        lightGallery(document.querySelector('.gallery .gallery-container'));
+    </script>
+
+</body>
+</html>    

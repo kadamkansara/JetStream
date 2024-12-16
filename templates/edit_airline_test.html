@@ -1,0 +1,85 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Aviation</title>  
+    {% load static %} 
+    <!--bootstrap link-->
+    <link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+    <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">
+</head>  
+<body> 
+
+<form method="POST" class="post-form" enctype="multipart/form-data" action="/admin_part/update_airlines/{{airlines_data.aid}}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Update Details</h3>  
+    </div>  
+  </div>  
+    
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Airline Name</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="airline_name" id="id_airline_name" required value="{{ airlines_data.airline_name }}" />  
+    </div>  
+  </div> 
+
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Airline Image</label>  
+        <div class="col-sm-4">  
+            <input type="file" name="airline_image" id="id_airline_image" required value="{{ airlines_data.airline_image }}" />  
+        </div>  
+    </div> 
+
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Airline type</label>  
+        <div class="col-sm-4">  
+            <input type="text" name="airline_type" id="id_airline_type" required  value="{{ airlines_data.airline_type }}" />  
+        </div> 
+    </div>
+     
+    <div>  
+      <div class="form-group row">  
+          <label class="col-sm-1 col-form-label"></label>  
+      <div class="col-sm-4">  
+          <button type="submit" class="btn btn-success">Update</button>  
+    </div>  
+  </div>  
+    </div>  
+</form>  
+</body>  
+</html> 
+
+
+
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Aviation</title>  
+    {% load static %} 
+    <!--bootstrap link-->
+    <link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+    <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">
+</head>  
+<body> 
+    {{msg}}
+    <div class="container">
+        <h1>Aviation - Edit Airlines</h1>
+    <form method="post" class="post-form" enctype="multipart/form-data"><!--action="/admin_part/update_airlines/{{airlines_data.aid}}"-->
+        {% csrf_token %}  
+        
+        {{form}}
+        <br>
+        <button type="submit" class="btn btn-info my-2" >Submit</button>
+     
+    </form> 
+    </div>  
+</body>  
+</html> 

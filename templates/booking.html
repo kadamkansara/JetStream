@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet>>>Stream - Flight Booking</title>
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'mycss/reservation.css' %}">
+ 
+  <!--bootstrap link-->
+  <link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+  <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">
+</head>
+<body>
+    <script src="https://js.stripe.com/v3/"></script>
+    <div class="container">
+        <h1>Flight Information</h1>
+        <div class="flight-info">
+            <h3>Plane : {{flight.air_craft_code}}</h3>
+            <p><strong>Airline:</strong> {{flight.airline}}</p>
+            <p><strong>From:</strong> {{flight.from_airport}}</p>
+            <p><strong>To:</strong> {{flight.to_airport}}</p>
+            <p><strong>Departure:</strong> {{flight.departure}}</p>
+            <p><strong>Estimated Arrival:</strong> {{flight.estimated_arrival}}</p>
+            <p><strong>Departure Time:</strong> {{flight.departure_time}}</p>
+            <p><strong>Arrival Time:</strong> {{flight.arrival_time}}</p>
+            <p><strong>Business Slot:</strong> Rs.{{flight.business_class_price}}</p>
+            <p><strong>Economy Slot:</strong> Rs.{{flight.economy_class_price}}</p>
+        </div>
+
+        <h2>Booking Form</h2>
+        {{msg}}
+            <div class="container">
+            <form method="post" class="post-form" enctype="multipart/form-data" >
+                {% csrf_token %}  
+                
+                {{form}}
+                <br>
+                <button type="submit" class="btn btn-info my-2" >Book</button>
+            
+            </form> 
+            </div>  
+            <!-- Payment Form -->
+
+    </div>
+</body>
+</html>

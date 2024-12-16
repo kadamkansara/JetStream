@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet>>>stream</title>
+	{% load static %}
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <!-- lightgallery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'mycss/index.css' %}">
+
+</head>
+<body>
+
+    <section class="header">
+
+        <a href="#" class="logo"> <i class="fas fa-plane"></i> Jet>>>stream</a>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="{% url 'flights_search' %}">Search Flights</a>            
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'register' %}">Sign up</a>
+			<a href="{% url 'login' %}">Sign in </a>
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+    </section>
+<!-- header -->
+    <!-- home section -->
+
+    <section class="home" id="home">
+        <div class="title" style="color:white;text-align:center;padding-top:5%;">
+            {% if messages %}
+            {%for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible">
+                    <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+                    <h4>{{message}}</h4>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <h1 class="heading">Fly Everyday....</h1>
+        <img src="{% static 'myimages/main_planez.webp' %}" style="width:90%;height:75vh;margin-left:5%;margin-top:3%;" alt="">
+
+    </section>
+
+    <!-- end home section -->
+
+    <!-- about us -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading">about us</h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="{% static 'myimages/about.jpeg' %}" alt="">
+            </div>
+    
+            <div class="content">
+                <h3>Our Journy Start With..</h3>
+                <p>Nemo Enim Ipsam Voluptatem Quia Voluptas Sit Aspernatur Aut Odit Aut Fugit, Sed Quia Consequuntur Magni Quis Nostrud Exercitation Commodo Volutpat A, Convallis Ac, Laoreet Enim. Phasellus Fermentum In, Dolor. Pellentesque Facilisis. Nulla Imperdiet Sit Amet Magna</p>
+                <p>Aliquam Erat Ac Ipsum. Integer Aliquam Purus. Quisque Lorem Tortor Fringilla Sed, Vestibulum Id, Eleifend Justo Vel Bibendum Sapien Massa Ac Turpis Faucibus Orci Luctus Non, Consectetuer Lobortis Quis, Varius In, Purus. Integer Ultrices Posuere Cubilia Curae, Nulla Ipsum Dolor Lacus, Suscipit Adipiscing. Quisque Lorem Tortor Fringilla Sed, Vestibulum Id, Eleifend Justo.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- end about us -->
+
+    <!-- airlines -->
+
+    <section class="menu" id="menu">
+
+        <h1 class="heading"> Airlines</h1>
+
+        <div class="box-container">
+           {% for i in airlines_data %}
+            <div class="box">
+                <div class="image">
+                    <img src="{{i.airline_image.url}}" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="title">{{i.airline_name }}</h3>
+                    <p>{{i.airline_type}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+    <!-- end airlines -->
+
+    <!-- footer -->
+
+    <section class="footer">
+
+        <div class="icons-container">
+            
+            <div class="icons">
+                <i class="fas fa-map"></i>
+                <h3>address</h3>
+                <p>Ahmedabad <br>
+                    Gujarat <br>
+                    India</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-phone"></i>
+                <h3>phone</h3>
+                <p>+91 12345 67890</p>
+                <p>+91 09876 54321</p>
+                
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-envelope"></i>
+                <h3>email</h3>
+                <a href="https://mail.google.com/mail/u/0/#inbox" class="link">nishit@gmail.com</a>
+                <a href="https://mail.google.com/mail/u/0/#inbox" class="link">Kadam@gmail.com</a>
+                <a href="https://mail.google.com/mail/u/0/#inbox" class="link">Piyush@gmail.com</a>                
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-clock"></i>
+                <h3>opening hours</h3>
+                <p>24/7</p>
+            </div>
+
+        </div>
+
+        <div class="share">
+            <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
+            <a href="https://x.com/i/flow/login" class="fab fa-twitter"></a>
+            <a href="https://www.instagram.com/accounts/login/?hl=en" class="fab fa-instagram"></a>
+            <a href="https://in.linkedin.com/" class="fab fa-linkedin"></a>
+        </div>
+
+        <div class="credit">Copyright <span>@2024</span> Jet>>>Stream  | all right reserved!</div>
+
+    </section>
+    <!-- footer -->
+
+
+
+
+    
+    
+    
+    
+    <!-- swiper -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- lightgallery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+    
+    <!-- custom js -->
+    <script src="{% static 'myjs/home.js' %}"></script>
+
+    <script>
+        lightGallery(document.querySelector('.gallery .gallery-container'));
+    </script>
+
+</body>
+</html>    

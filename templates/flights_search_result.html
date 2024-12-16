@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet>>>Stream - Search Results</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mycss/flights_search_result.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Flight Search Results</h1>
+        <a href="{% url 'home' %}" style="text-decoration: none;">
+            <button style="background-color:green; color: white; padding: 10px 20px; font-size: 16px; border-radius: 5px;; cursor: pointer;">
+                Go to Home
+            </button>
+        </a>
+    </header>
+	
+	{% if flights %}
+	
+    <main>
+	{% for flight in flights %}
+        <section class="flight-result">
+            <h2>Flight Number: {{flight.code}}</h2>
+            <div class="flight">
+                <div class="flight-info">
+                    <h3>Plane : {{flight.air_craft_code}}</h3>
+                    <p><strong>Airline:</strong> {{flight.airline}}</p>
+                    <p><strong>From:</strong> {{flight.from_airport}}</p>
+                    <p><strong>To:</strong> {{flight.to_airport}}</p>
+                    <p><strong>Departure:</strong> {{flight.departure}} {{flight.departure_time }}</p>
+                    <p><strong>Estimated Arrival:</strong> {{flight.estimated_arrival}} {{flight.arrival_time }}</p>
+                </div>
+                <div class="flight-price">
+                    <p><strong>Business Slot:</strong> Rs.{{flight.business_class_price}}</p>
+                    <p><strong>Economy Slot:</strong> Rs.{{flight.economy_class_price}}</p>
+                    <a href = "{% url 'booking' flight.fid %}" style="color:green;text-decoration:none;" ><button> Book Now </button></a>
+                
+                </div>
+            </div>
+            <!-- Repeat the above block for additional flights -->
+        </section>
+	{% endfor %}
+	{% else %}
+       <p>No Flights Found</p>
+    {% endif %}
+</main>
+<footer>
+    <p>&copy; Copyright <span>@2024</span> Jet>>>Stream  | all right reserved!</p>
+</footer>
+</body>
+</html>

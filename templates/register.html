@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jet>>>Stream - Sign Up</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'mycss/register.css' %}">
+  <script type="text/javascript" src="{% static 'myjs/register.js' %}" defer></script>
+</head>
+
+
+<body>
+
+  <div class="title" style="color:white;text-align:center;padding-top:5%;">
+    {% if messages %}
+    {%for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible">
+            <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+            <h4>{{message}}</h4>
+        </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+
+
+
+
+  <div class="wrapper" style="background-image: url('{% static 'myimages/' %}'); z-index:-1;">
+
+    <h1>Signup</h1>
+    <p id="error-message"></p>
+    <form id="form" method="post" action="{% url 'register' %}">
+      {% csrf_token %}
+
+      <div>
+        <label for="email-input">
+            <span>@</span>
+          </label>
+        <input type="text" name="first_name" id="firstname-input" placeholder="Enter Firstname">
+      </div>
+
+      <div>
+        <label for="email-input">
+            <span>@</span>
+          </label>
+        <input type="text" name="last_name" id="lastname-input" placeholder="Enter Lastname">
+      </div>
+
+      <div>
+        <label for="email-input">
+            <span>@</span>
+          </label>
+        <input type="text" name="username" id="username-input" placeholder="Enter Username">
+      </div>
+
+      <div>
+        <label for="email-input">
+          <span>@</span>
+        </label>
+        <input type="email" name="email" id="email-input" placeholder="Enter Email">
+      </div>
+
+      <div>
+        <label for="email-input">
+            <span>@</span>
+          </label>
+        <input type="password" name="password" id="password" placeholder="Enter Password">
+      </div>
+
+      <div style="margin-left:-420px;">
+        <input type="checkbox" onclick="togglePassword()" style="margin-left:180px;margin-top:-12px;flex-grow: 0">show password 
+      </div>
+
+
+
+      <!--<div>
+        <label for="email-input">
+            <span>@</span>
+          </label>
+        <input type="password" name="password2" id="repeat-password-input" placeholder="Repeat Password">
+      </div>-->
+
+      <button type="submit">Signup</button>
+      <p>Already have an Account? <a href="{% url 'login' %}">login</a> </p>
+    </form>
+    
+  </div>
+
+  <script>
+    function togglePassword() {
+        var passwordInput = document.getElementById('password');
+        var checkbox = document.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    }
+  </script>
+</body>
+</html>

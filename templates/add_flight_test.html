@@ -1,0 +1,97 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Aviation-Add Flight</title>  
+    {% load static %} 
+    <!--bootstrap link-->
+    <link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+    <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">
+</head>  
+<body> 
+    {{msg}}
+    <div class="container">
+        <h1>Add Flight</h1>
+    <form method="post" class="post-form" enctype="multipart/form-data" >
+        {% csrf_token %}  
+        
+        {{form}}
+        <br>
+        <button type="submit" class="btn btn-info my-2" >Submit</button>
+     
+    </form> 
+    </div>  
+</body>  
+</html> 
+
+
+
+
+
+----------------------------------------flight main form----------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Aviation - add Flights</title>
+    {% load static %}
+    <!--<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">-->
+    <!--bootstrap link-->
+    <!--
+    <link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+    <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">
+    -->
+
+    <link rel="stylesheet" href="{% static 'mycss/add_airlines.css'%}"> 
+
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add Flights</h1>
+        <form method="post" class="post-form" enctype="multipart/form-data" action="/admin_part/add_flights/">
+            {% csrf_token %}
+                <div>
+                    <label>From:</label>
+                    {{ flights_data.origin }}
+                    
+                </div>
+
+                <div>
+                    <label>To:</label>
+                    {{ flights_data.destination }}
+                    
+                </div>
+
+                <div>
+                    <label>Time[HH:MM:SS]:</label>
+                    {{ flights_data.duration }}
+                    
+                </div>
+
+                <div>
+                    <label>Departure Time[HH:MM:SS]:</label>
+                    {{ flights_data.depart_time }}
+                    
+                </div>
+
+                <div>
+                    <label>Arrival Time[HH:MM:SS]:</label>
+                    {{ flights_data.arrival_time }}
+                    
+                </div>
+
+                <div>
+                    <label>Airline:</label>
+                    {{ flights_data.airline }}
+                    
+                </div>
+                
+                <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

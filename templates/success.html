@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet>>>Stream - Booking Success</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mycss/success.css' %}">
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> <span>&#x2708;</span> Jet>>>Stream</h1>
+        </header>
+
+        <main>
+            <div class="success-message">
+                <h2>Thank You for Your Booking!</h2>
+                <p>Your flight has been successfully booked. Below are your booking details:</p>
+            </div>
+
+            <div class="booking-details">
+                <h3>Flight Details:</h3>
+                <ul>
+                    <li><strong>Air Craft Code : </strong> {{ flight.air_craft_code }} </li>
+                    <li><strong>Flight Number : </strong> {{ flight.code }} </li>
+                    <li><strong>Departure : </strong> {{ flight.from_airport }}</li>
+                    <li><strong>Arrival : </strong> {{ flight.to_airport }}</li>
+                    <li><strong>Departure Date : </strong> {{ flight.departure }} {{flight.departure_time }}</li>
+                    <li><strong>Arrival Date : </strong> {{ flight.estimated_arrival }} {{flight.arrival_time }}</li>
+                    <li><strong>Airline : </strong> {{ flight.airline }}</li>
+                    <li><strong>Total Price : </strong>
+                        {% if passenger.type == '1' %}
+                        {{flight.business_class_price}}
+                        {% else %}
+                        {{flight.economy_class_price}}
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="booking-details">
+                <h3>Passenger Details:</h3>
+                <ul>
+                    <li><strong>Name : </strong> {{ passenger.first_name }} {{ passenger.last_name }}</li>
+                    <li><strong>Gender : </strong> {{ passenger.gender }}</li>
+                    <li><strong>Address : </strong> {{ passenger.address }}</li>
+                    <li><strong>Email : </strong> {{ passenger.email }}</li>
+                    <li><strong>Phone Number : </strong> {{ passenger.phone_number }}</li>
+                    <li><strong>Passport Number : </strong> {{ passenger.passport_number }}</li>
+                    <li>
+                        <strong>Class Type : </strong>
+                        {% if passenger.type == '1' %}
+                            Business
+                        {% else %}
+                            Economy
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="booking-details">
+            <div class="qr-code">
+                <h3>Your Booking QR Code:</h3>
+                <img src="{{ MEDIA_URL }}{{ qr_code_path }}" height="20%" width="20%" alt="Booking QR Code" />
+            </div>
+            </div>
+
+            <div class="call-to-action">
+                <p>We look forward to welcoming you on board!</p>
+                <a href="{% url 'home' %}" class="btn">Back to Home</a>
+                <a href="#" class="btn" onclick="printPage()">Print Ticket</a>
+                <a href="?download_pdf=true" class="btn">Download PDF</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Flight Booking Company. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

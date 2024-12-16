@@ -1,0 +1,35 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Jet>>>Stream - Search Flights</title>  
+    {% load static %} 
+    <!--bootstrap link-->
+    <link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+    <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">
+</head>  
+<body> 
+    {{msg}}
+    <div class="container">
+        <h1>Search Flights</h1>
+        {% if messages %}
+                {%for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible">
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button> -->
+                        <h4>{{message}}</h4>
+                    </div>
+                {% endfor %}
+                {% endif %}
+    <form method="POST" class="post-form" enctype="multipart/form-data" >
+        {% csrf_token %}  
+        
+        {{form}}
+        <br>
+        <button type="submit" class="btn btn-info my-2" >Search</button>
+        <button type="button" class="btn btn-primary my-2" ><a href="{% url 'home' %}" style="text-decoration:none;color:white;">Go Back</a></button>
+    
+    </form> 
+    </div>  
+</body>  
+</html> 

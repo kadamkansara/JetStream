@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Aviation</title>  
+    {% load static %} 
+    <!--bootstrap link-->
+    <link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+    <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">
+</head>  
+<body> 
+
+<form method="POST" class="post-form" enctype="multipart/form-data" action="/admin_part/update_airlines/{{airlines_data.aid}}">  
+        {% csrf_token %}  
+    <div class="container">    
+        {{airlines_data}}
+        <button type="submit" class="btn btn-info my-2"></button>
+    </div>  
+</form>  
+</body>  
+</html> 
+
+
+
+-------------------------------main code of ADD AIRLINE--------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Aviation - add airlines</title>
+    {% load static %}
+    <!--bootstrap link-->
+    <!--<link rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+    <link rel="stylesheet" id="theme" href="{% static 'css/colors/default.css'%}">-->
+    <link rel="stylesheet" href="{% static 'mycss/add_airlines.css'%}"> 
+
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add Airlines</h1>
+        <form method="post" class="post-form" enctype="multipart/form-data" action="/admin_part/add_airlines/">
+            {% csrf_token %}
+            
+            <div>
+                <label>Airline Name:</label>
+                {{ airlines_data.airline_name }}
+                
+            </div>
+
+            <div>
+                <label>Airline Image:</label>
+                {{ airlines_data.airline_image}}
+                
+            </div>
+            
+            <div>
+                <label>Airline Type:</label>
+                {{ airlines_data.airline_type}} 
+                
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+ 
+
+</body>
+</html>

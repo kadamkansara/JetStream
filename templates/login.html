@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jet>>>Stream - Sign In</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'mycss/login.css' %}">
+  <script type="text/javascript" src="{% static 'myjs/login.js' %}" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+  <div class="title" style="text-align:center;padding-top:5%;">
+    {% if messages %}
+    {%for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible">
+            <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+            <h4>{{message}}</h4>
+        </div>
+    {% endfor %}
+    {% endif %}
+</div>
+  <div class="wrapper" style="background-image: url('{% static 'myimages/' %}'); z-index:-1;">
+    <h1>Login</h1>
+    <p id="error-message"></p>
+    <form id="form" method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div>
+        <label for="email-input">
+          <span>@</span>
+        </label>
+        <input type="text" name="username" id="email-input" placeholder="Enter username">
+      </div>
+      <div>
+        <label for="password-input">
+            <span>@</span>
+          </label>
+        <input type="password" name="password" id="password" placeholder="Enter Password">                   
+      </div>
+
+      <div style="margin-left:-420px;">
+        <input type="checkbox" onclick="togglePassword()" style="margin-left:180px;margin-top:-12px;flex-grow: 0">show password 
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>New here? <a href="{% url 'register' %}">Create an Account</a></p>
+    <p>Dont remember your password? <a href="{% url 'password_reset' %}">forgot Password</a></p>
+  </div>
+
+  <script>
+    function togglePassword() {
+        var passwordInput = document.getElementById('password');
+        var checkbox = document.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    }
+</script>
+</body>
+</html>

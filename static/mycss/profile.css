@@ -1,0 +1,140 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #007BFF;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.profile-picture {
+    flex: 1;
+    text-align: center;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.profile-details {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.profile-details h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.profile-details p {
+    margin: 5px 0;
+}
+
+.booking-history {
+    margin-bottom: 30px;
+}
+
+.booking-history h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.booking-history table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.booking-history th,
+.booking-history td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.booking-history th {
+    background-color: #f2f2f2;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .profile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-picture {
+        margin-bottom: 20px;
+    }
+
+    .profile-details {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}
